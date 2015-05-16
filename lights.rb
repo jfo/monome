@@ -1,25 +1,26 @@
 #!/usr/bin/env ruby
-
-require 'rubygems'
+# require 'rubygems'
 require 'serialport'
 
 ser = SerialPort.new("/dev/tty.usbserial-m1000065", 9600)
+# ser.write("\x13")
+# sleep 1
+# ser.write("\x12")
+#
+
+    # puts ser.getc().ord.to_s(16).to_i
+#
+
 
 loop do
-    der = ser.readline(1).ord.to_s(16).to_i
-    if der == 21
-        x = ser.readline(1)
-        y = ser.readline(1)
-        ser.write("\x11")
-        ser.write(x)
-        ser.write(y)
-    end
-
-    if der == 20
-        x = ser.readline(1)
-        y = ser.readline(1)
-        ser.write("\x10")
-        ser.write(x)
-        ser.write(y)
+    thinger = ser.getc().ord.to_s(16)
+    if thinger == "21"
+        x = ser.getc
+        y = ser.getc
+        ser.write("\x11" + x + y)
+    elsif thinger == "20"
+        x = ser.getc
+        y = ser.getc
+        ser.write("\x10" + x + y)
     end
 end
