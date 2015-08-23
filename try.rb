@@ -3,7 +3,6 @@ require 'serialport'
 
 ser = SerialPort.new("/dev/tty.usbserial-m1000065", 9600)
 
-
 x = "\x00"
 x = "\x00" + "\x01"
 

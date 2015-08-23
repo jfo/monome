@@ -3,17 +3,13 @@
 require 'serialport'
 
 ser = SerialPort.new("/dev/tty.usbserial-m1000065", 9600)
-# ser.write("\x13")
-# sleep 1
-# ser.write("\x12")
-#
-
-    # puts ser.getc().ord.to_s(16).to_i
-#
-
+ser.write("\x13")
+sleep 1
+ser.write("\x12")
 
 loop do
     thinger = ser.getc().ord.to_s(16)
+    puts thinger
     if thinger == "21"
         x = ser.getc
         y = ser.getc
