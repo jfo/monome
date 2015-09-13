@@ -1,5 +1,7 @@
+require_relative "monome.rb"
+m = Monome.new
 
-x = 240
+x = 0
 x2 = 0
 loop do
     x+=1
@@ -16,19 +18,19 @@ loop do
 
     if x == 255
         x = 0
-        x2 = x + 255
+        x2 += 1
 
         m.quad(-1, 0, [
             x2,
-            x2+1,
-            x2+2,
-            x2+3,
-            x2+4,
-            x2+5,
-            x2+6,
-            x2+7
+            x2,
+            x2,
+            x2,
+            x2,
+            x2,
+            x2,
+            x2
         ])
     end
+    sleep 0.0001
 
-    gets
 end

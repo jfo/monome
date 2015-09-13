@@ -38,18 +38,3 @@ def blinker
     end
     client.send(OSC::Message.new( "/monome/grid/led/all", 0 ))
 end
-
-# blinker
-
-# p @payload.class.instance_methods(false)
-# p @payload.encode
-
-
-# u2 = UDPSocket.new
-# u2.connect("127.0.0.1", 12002)
-# u2.send @thingy, 0
-
-# socket = UDPSocket.new
-# socket.send(@payload, 0, UDP_HOST, UDP_PORT)
-# socket.close
-
