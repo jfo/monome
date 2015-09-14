@@ -3,6 +3,12 @@ require 'osc-ruby'
 class Monome
     def initialize(port = 12451)
         @client = OSC::Client.new('localhost', port)
+
+        @server = OSC::Server.new(12346)
+        @client.send(OSC::Message.new("/sys/port", 12346).encode)
+
+        prepare_server
+        @server.run
     end
 
     def light(x, y, s)
@@ -48,6 +54,10 @@ class Monome
     def all_on; all ON; end
     def all_off; all OFF; end
 
+    def respond(x,y,s)
+        light x, y, s
+    end
+
     private
 
     ON = 1
@@ -56,6 +66,12 @@ class Monome
     def send(addr, *args)
         @client.send(OSC::Message.new(addr, *args).encode)
     end
+
+    def prepare_server
+        @server.add_method "/monome/grid/key" do |msg|
+            respond *msg.to_a
+        end
+    end
 end
 
-m = Monome.new
+m = Monome.new 12766

@@ -1,11 +1,11 @@
 require_relative "monome.rb"
-m = Monome.new
+m = Monome.new 12766
 
 x = 0
 x2 = 0
 loop do
     x+=1
-    m.quad 0, 0, [
+    m.quad_one [
         x,
         x+1,
         x+2,
@@ -20,7 +20,7 @@ loop do
         x = 0
         x2 += 1
 
-        m.quad(-1, 0, [
+        m.quad_two [
             x2,
             x2,
             x2,
@@ -29,8 +29,8 @@ loop do
             x2,
             x2,
             x2
-        ])
+        ]
     end
-    sleep 0.0001
+    sleep 0.01
 
 end
