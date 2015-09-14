@@ -6,6 +6,7 @@ class Monome
 
         @server = OSC::Server.new(12346)
         @client.send(OSC::Message.new("/sys/port", 12346).encode)
+        @client.send(OSC::Message.new("/sys/prefix", "monome").encode)
 
         prepare_server
         @server.run
@@ -74,4 +75,3 @@ class Monome
     end
 end
 
-m = Monome.new 12766
