@@ -21,11 +21,8 @@ class MonomeMidi < Monome
         elsif s == 0
             @sc.send(OSC::Message.new("/n_free", stringy(x,y)).encode)
         end
-
         super
     end
 end
 
-MonomeMidi.new 10325
-
-sleep 1
+MonomeMidi.new 12766
