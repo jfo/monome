@@ -3,13 +3,8 @@ require 'osc-ruby'
 class Monome
     def initialize(port = 12451)
         @client = OSC::Client.new('localhost', port)
-
-        @server = OSC::Server.new(12346)
         @client.send(OSC::Message.new("/sys/port", 12346).encode)
         @client.send(OSC::Message.new("/sys/prefix", "monome").encode)
-
-        prepare_server
-        @server.run
     end
 
     def light(x, y, s)
@@ -57,6 +52,13 @@ class Monome
 
     def respond(x,y,s)
         light x, y, s
+    end
+
+    def run_server
+        @server = OSC::Server.new(12346)
+        prepare_server
+        all_off
+        @server.run
     end
 
     private

@@ -1,6 +1,6 @@
 require_relative "monome.rb"
-m = Monome.new 12766
 
+m = Monome.new 12766
 x = 0
 x2 = 0
 loop do
@@ -32,5 +32,4 @@ loop do
         ]
     end
     sleep 0.01
-
 end
