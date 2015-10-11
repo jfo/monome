@@ -4,7 +4,8 @@ s.boot;
 (
 SynthDef("sine", { arg freq;
 	var osc;
-	osc = SinOsc.ar(freq, 0, 0.1); // 800 Hz sine oscillator
+	osc = SinOsc.ar(freq); // 800 Hz sine oscillator
+	Out.ar(1, osc); // send output to audio bus zero.
 	Out.ar(0, osc); // send output to audio bus zero.
 }).send(s);
 )
